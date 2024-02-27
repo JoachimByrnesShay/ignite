@@ -28,7 +28,7 @@ const Home = () => {
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => {
-          console.log(game);
+          // console.log(game);
           return (
             <Game
               key={game.id}
@@ -36,6 +36,7 @@ const Home = () => {
               releaseDate={
                 game.released
               }
+              gameId={game.id}
               image={
                 game.background_image
               }
@@ -46,7 +47,6 @@ const Home = () => {
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => {
-          console.log(game);
           return (
             <Game
               key={game.id}
@@ -57,6 +57,7 @@ const Home = () => {
               image={
                 game.background_image
               }
+              gameId={game.id}
             />
           );
         })}
@@ -64,7 +65,6 @@ const Home = () => {
       <h2>New Games</h2>
       <Games>
         {newGames.map((game) => {
-          console.log(game);
           return (
             <Game
               key={game.id}
@@ -75,6 +75,7 @@ const Home = () => {
               image={
                 game.background_image
               }
+              gameId={game.id}
             />
           );
         })}

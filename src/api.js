@@ -34,4 +34,9 @@ const new_games = `games?token&key=${apiKey}&dates=${lastYearDate},${currentDate
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${new_games}`;
+export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}?token&key=${apiKey}`;
+//https://api.rawg.io/api/games/962674?token&key=7f49ec3c0f8d4489973dfb1ee425aa83
+
+export const gameScreenShotsURL = (game_id) => `${base_url}games/${game_id}/screenshots?token&key=${apiKey}`;
+
 console.log(popularGamesURL());
