@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
             background-color: darkgrey;
             border-radius:1em;
         }
+        &::-webkit-scrollbar-track{
+            background-color: white;
+            border-radius:1em;
+        }
         body {
             font-family: "Montserrat", sans-serif;
             width:100%;
