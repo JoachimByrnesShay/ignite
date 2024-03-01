@@ -1,59 +1,82 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const GameDetail = () => {
-  const { game, screenShots } =
-    useSelector(
-      (state) => state.detail
-    );
+  const {
+    game,
+    screenShots,
+    isLoading,
+  } = useSelector(
+    (state) => state.detail
+  );
   return (
-    <CardShadow className="card-shadow">
-      <Detail className="detail">
-        <Stats className="stats">
-          <div className="rating">
-            <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
-          </div>
-          <Info className="info">
-            <h3>Platforms</h3>
-            <Platforms className="platforms">
-              {game.platforms.map(
-                (data) => (
-                  <h3
-                    key={
-                      data.platform.id
-                    }
-                  >
-                    {data.platform.name}
-                  </h3>
-                )
-              )}
-            </Platforms>
-          </Info>
-        </Stats>
-        <Media className="media">
-          <img
-            src={game.background_image}
-            alt=""
-          />
-        </Media>
-        <Description className="description">
-          <p>{game.description_raw}</p>
-        </Description>
-        <div className="gallery">
-          {screenShots.results.map(
-            (screen) => (
-              <img
-                key={screen.id}
-                src={screen.image}
-                alt="game screen"
-              />
-            )
-          )}
-        </div>
-      </Detail>
-    </CardShadow>
+    <>
+      {!isLoading && (
+        <CardShadow className="card-shadow">
+          <Link to={"/"}>
+            <Detail className="detail">
+              <Stats className="stats">
+                <div className="rating">
+                  <h3>{game.name}</h3>
+                  <p>
+                    Rating:{" "}
+                    {game.rating}
+                  </p>
+                </div>
+                <Info className="info">
+                  <h3>Platforms</h3>
+                  <Platforms className="platforms">
+                    {game.platforms.map(
+                      (data) => (
+                        <h3
+                          key={
+                            data
+                              .platform
+                              .id
+                          }
+                        >
+                          {
+                            data
+                              .platform
+                              .name
+                          }
+                        </h3>
+                      )
+                    )}
+                  </Platforms>
+                </Info>
+              </Stats>
+              <Media className="media">
+                <img
+                  src={
+                    game.background_image
+                  }
+                  alt=""
+                />
+              </Media>
+              <Description className="description">
+                <p>
+                  {game.description_raw}
+                </p>
+              </Description>
+              <div className="gallery">
+                {screenShots.results.map(
+                  (screen) => (
+                    <img
+                      key={screen.id}
+                      src={screen.image}
+                      alt="game screen"
+                    />
+                  )
+                )}
+              </div>
+            </Detail>
+          </Link>
+        </CardShadow>
+      )}
+    </>
   );
 };
 

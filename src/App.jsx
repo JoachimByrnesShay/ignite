@@ -3,12 +3,26 @@
 //import apiKey from "./apiKey";
 import Home from "./pages/Home";
 import GlobalStyles from "./components/GlobalStyles";
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <Home />
+      <Routes>
+        {["/game/:id", "/"].map(
+          (path) => (
+            <Route
+              key={path}
+              path={path}
+              element={<Home />}
+            />
+          )
+        )}
+      </Routes>
     </div>
   );
 }
