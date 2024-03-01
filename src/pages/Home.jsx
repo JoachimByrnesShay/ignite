@@ -7,6 +7,7 @@ import { loadGames } from "../actions/gamesAction";
 import Game from ".././components/Game";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import GameDetail from ".././components/GameDetail";
 
 const Home = () => {
   //FETCH GAMES
