@@ -40,4 +40,5 @@ const StyledGame = styled(motion.div)`
     object-fit: cover;
   }
   cursor: pointer;
+  overflow: hidden;
 `;
