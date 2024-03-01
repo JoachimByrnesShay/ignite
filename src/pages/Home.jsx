@@ -7,6 +7,7 @@ import { loadGames } from "../actions/gamesAction";
 import Game from ".././components/Game";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import GameDetail from ".././components/GameDetail";
 
 const Home = () => {
   //FETCH GAMES
@@ -25,26 +26,28 @@ const Home = () => {
 
   return (
     <GameList>
+      <GameDetail />
       <h2>Upcoming Games</h2>
       <Games>
-        {upcoming.map((game) => {
-          // console.log(game);
-          return (
-            <Game
-              key={game.id}
-              name={game.name}
-              releaseDate={
-                game.released
-              }
-              gameId={game.id}
-              image={
-                game.background_image
-              }
-            />
-          );
-        })}
+        {upcoming &&
+          upcoming.map((game) => {
+            // console.log(game);
+            return (
+              <Game
+                key={game.id}
+                name={game.name}
+                releaseDate={
+                  game.released
+                }
+                gameId={game.id}
+                image={
+                  game.background_image
+                }
+              />
+            );
+          })}
       </Games>
-      <h2>Popular Games</h2>
+      {/*<h2>Popular Games</h2>
       <Games>
         {popular.map((game) => {
           return (
@@ -79,7 +82,7 @@ const Home = () => {
             />
           );
         })}
-      </Games>
+      </Games> */}
     </GameList>
   );
 };
