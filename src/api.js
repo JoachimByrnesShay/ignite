@@ -4,8 +4,13 @@ import apiKey from "./apiKey.js"
 const base_url = `https://api.rawg.io/api/`
 // const popular_games = `https://api.rawg.io/api/games?dates=2024,01`
 
+ 
+
 const getCurrentMonth = ()=>{
-    const month = new Date().getMonth() + 1;
+   // const month = new Date(new Date().getMonth() + 1);
+   const now = new Date();
+   const current = new Date(now.getFullYear(), now.getMonth()+1, 1);
+   const month = current.getMonth();
     if(month < 10){
         return `0${month}`
     } else {
@@ -14,7 +19,10 @@ const getCurrentMonth = ()=>{
 }
 
 const getCurrentDay = () => {
-    const day = new Date().getDate();
+    const now = new Date();
+    const current = new Date(now.getFullYear(), now.getMonth()+1, 1);
+    // const day = new Date().getDate();
+    const day = current.getDate();
     if(day < 10){
         return `0${day}`
     } else {

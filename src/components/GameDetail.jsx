@@ -1,31 +1,23 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { gameScreenShotsURL } from "../api";
 
 const GameDetail = () => {
   const { game, screenShots } =
-    useSelector((state) => {
-      console.log(state);
-      return state.detail;
-    });
-  console.log("detail is: ", game);
-  //   console.log(
-  //     "game is:",
-  //     gameScreenShotsURL
-  //   );
-
+    useSelector(
+      (state) => state.detail
+    );
   return (
     <CardShadow className="card-shadow">
-      <Detail>
-        <div className="stats">
+      <Detail className="detail">
+        <Stats className="stats">
           <div className="rating">
             <h3>{game.name}</h3>
             <p>Rating: {game.rating}</p>
           </div>
-          <div className="info">
+          <Info className="info">
             <h3>Platforms</h3>
-            <div className="platforms">
+            <Platforms className="platforms">
               {game.platforms.map(
                 (data) => (
                   <h3
@@ -37,25 +29,25 @@ const GameDetail = () => {
                   </h3>
                 )
               )}
-            </div>
-          </div>
-        </div>
-        <div className="media">
+            </Platforms>
+          </Info>
+        </Stats>
+        <Media className="media">
           <img
             src={game.background_image}
-            alt="image"
+            alt=""
           />
-        </div>
-        <div className="description">
+        </Media>
+        <Description className="description">
           <p>{game.description_raw}</p>
-        </div>
+        </Description>
         <div className="gallery">
           {screenShots.results.map(
             (screen) => (
               <img
                 key={screen.id}
                 src={screen.image}
-                alt="screen"
+                alt="game screen"
               />
             )
           )}
@@ -69,7 +61,7 @@ const CardShadow = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -79,7 +71,7 @@ const CardShadow = styled(motion.div)`
   &::-webkit-scrollbar-thumb {
     background-color: #ff7676;
   }
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar-track {
     background-color: white;
   }
 `;
@@ -87,7 +79,7 @@ const CardShadow = styled(motion.div)`
 const Detail = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
   background: white;
   position: absolute;
   left: 10%;
@@ -95,5 +87,39 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
   }
+`;
+
+const Stats = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Info = styled(motion.div)`
+  text-align: center;
+`;
+
+const Platforms = styled(motion.div)`
+  display: flex;
+  justify-content: space-evenly;
+  img {
+    margin-left: 3rem;
+  }
+  h3 {
+    margin: 1.5rem 2%;
+  }
+`;
+
+const Media = styled(motion.div)`
+  margin-top: 5rem;
+  img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
+`;
+
+const Description = styled(motion.div)`
+  margin: 5rem 0rem;
 `;
 export default GameDetail;
