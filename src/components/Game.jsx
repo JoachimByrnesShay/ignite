@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import loadDetail from "../actions/detailAction.js";
 import { Link } from "react-router-dom";
+import { smallImage } from "../actions/util.js";
 
 const Game = (props) => {
   const dispatch = useDispatch();
@@ -20,7 +21,12 @@ const Game = (props) => {
       >
         <h3>{props.name}</h3>
         <p>{props.releaseDate}</p>
-        <img src={props.image} />
+        <img
+          src={smallImage(
+            props.image,
+            640
+          )}
+        />
       </Link>
     </StyledGame>
   );

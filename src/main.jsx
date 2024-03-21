@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./reducers";
 import { thunk } from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
+import "./index.css";
 
 const composeEnhancer =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||

@@ -5,6 +5,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import { smallImage } from "../actions/util";
 
 const GameDetail = () => {
   document.body.style.overflow =
@@ -71,9 +72,10 @@ const GameDetail = () => {
               </Stats>
               <Media className="media">
                 <img
-                  src={
-                    game.background_image
-                  }
+                  src={smallImage(
+                    game.background_image,
+                    640
+                  )}
                   alt=""
                 />
               </Media>
