@@ -5,7 +5,11 @@ import {
 } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 import Game from ".././components/Game";
-import { motion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  LayoutGroup,
+} from "framer-motion";
 import styled from "styled-components";
 import GameDetail from ".././components/GameDetail";
 import { useLocation } from "react-router-dom";
@@ -31,7 +35,28 @@ const Home = () => {
 
   return (
     <GameList>
-      {pathId && <GameDetail />}
+      {/* <LayoutGroup type="crossfade"> */}
+      <AnimatePresence>
+        {" "}
+        {pathId && (
+          <GameDetail
+            pathId={pathId}
+            initial={{
+              opacity: 0,
+              y: 700,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 3,
+              ease: "easeOut",
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       <h2>Upcoming Games</h2>
 
       <Games>
@@ -89,6 +114,7 @@ const Home = () => {
           );
         })}
       </Games> */}
+      {/* </LayoutGroup> */}
     </GameList>
   );
 };

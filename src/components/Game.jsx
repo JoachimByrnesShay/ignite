@@ -10,8 +10,11 @@ const Game = (props) => {
   const loadDetailHandler = (id) => {
     dispatch(loadDetail(id));
   };
+  const stringId =
+    props.gameId.toString();
   return (
     <StyledGame
+      LayoutId={stringId}
       onClick={() =>
         loadDetailHandler(props.gameId)
       }

@@ -6,8 +6,14 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { smallImage } from "../actions/util";
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
 
-const GameDetail = () => {
+const GameDetail = ({ pathId }) => {
   document.body.style.overflow =
     "hidden";
   const navigate = useNavigate();
@@ -21,6 +27,23 @@ const GameDetail = () => {
       document.body.style.overflow =
         "auto";
       navigate("/");
+    }
+  };
+
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
     }
   };
   const {
@@ -38,7 +61,10 @@ const GameDetail = () => {
           className="shadow"
         >
           <Link to={"/"}>
-            <Detail className="detail">
+            <Detail
+              className="detail"
+              LayoutId={pathId}
+            >
               <Stats className="stats">
                 <div className="rating">
                   <h3>{game.name}</h3>
@@ -52,19 +78,18 @@ const GameDetail = () => {
                   <Platforms className="platforms">
                     {game.platforms.map(
                       (data) => (
-                        <h3
+                        <img
                           key={
                             data
                               .platform
                               .id
                           }
-                        >
-                          {
+                          src={getPlatform(
                             data
                               .platform
                               .name
-                          }
-                        </h3>
+                          )}
+                        />
                       )
                     )}
                   </Platforms>
@@ -105,6 +130,7 @@ const GameDetail = () => {
 
 const CardShadow = styled(motion.div)`
   width: 100%;
+  z-index: 5;
   min-height: 100vh;
   overflow-y: scroll;
   background: rgb(0, 0, 0, 0.5);
