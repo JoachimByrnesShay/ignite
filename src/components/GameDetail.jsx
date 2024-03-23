@@ -12,6 +12,8 @@ import xbox from "../img/xbox.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
+import starEmpty from "../img/star-empty.png";
+import starFull from "../img/star-full.png";
 
 const GameDetail = ({ pathId }) => {
   document.body.style.overflow =
@@ -28,6 +30,33 @@ const GameDetail = ({ pathId }) => {
         "auto";
       navigate("/");
     }
+  };
+
+  const getStars = () => {
+    const stars = [];
+    const rating = Math.floor(
+      game.rating
+    );
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(
+          <img
+            alt="star"
+            key={i}
+            src={starFull}
+          />
+        );
+      } else {
+        stars.push(
+          <img
+            alt="star"
+            key={i}
+            src={starEmpty}
+          />
+        );
+      }
+    }
+    return stars;
   };
 
   const getPlatform = (platform) => {
@@ -72,6 +101,9 @@ const GameDetail = ({ pathId }) => {
                     Rating:{" "}
                     {game.rating}
                   </p>
+                  <Stars>
+                    {getStars()}
+                  </Stars>
                 </div>
                 <Info className="info">
                   <h3>Platforms</h3>
@@ -130,7 +162,7 @@ const GameDetail = ({ pathId }) => {
 
 const CardShadow = styled(motion.div)`
   width: 100%;
-  z-index: 5;
+
   min-height: 100vh;
   overflow-y: scroll;
   background: rgb(0, 0, 0, 0.5);
@@ -147,6 +179,8 @@ const CardShadow = styled(motion.div)`
     background-color: white;
   }
 `;
+
+const Stars = styled(motion.div)``;
 
 const Detail = styled(motion.div)`
   width: 80%;
@@ -165,6 +199,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
 `;
 
 const Info = styled(motion.div)`
