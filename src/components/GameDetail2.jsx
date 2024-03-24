@@ -32,32 +32,32 @@ const GameDetail = ({ pathId }) => {
     }
   };
 
-  const getStars = () => {
-    const stars = [];
-    const rating = Math.floor(
-      game.rating
-    );
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(
-          <img
-            alt="star"
-            key={i}
-            src={starFull}
-          />
-        );
-      } else {
-        stars.push(
-          <img
-            alt="star"
-            key={i}
-            src={starEmpty}
-          />
-        );
-      }
-    }
-    return stars;
-  };
+  // const getStars = () => {
+  //   const stars = [];
+  //   const rating = Math.floor(
+  //     game.rating
+  //   );
+  //   for (let i = 1; i <= 5; i++) {
+  //     if (i <= rating) {
+  //       stars.push(
+  //         <img
+  //           alt="star"
+  //           key={i}
+  //           src={starFull}
+  //         />
+  //       );
+  //     } else {
+  //       stars.push(
+  //         <img
+  //           alt="star"
+  //           key={i}
+  //           src={starEmpty}
+  //         />
+  //       );
+  //     }
+  //   }
+  //   return stars;
+  // };
 
   const getPlatform = (platform) => {
     switch (platform) {
@@ -82,8 +82,6 @@ const GameDetail = ({ pathId }) => {
   } = useSelector(
     (state) => state.detail
   );
-  console.log("i am in here");
-  console.log(game);
   return (
     <>
       {!isLoading && (
@@ -103,12 +101,11 @@ const GameDetail = ({ pathId }) => {
                     Rating:{" "}
                     {game.rating}
                   </p>
-                  {getStars()}
                 </div>
                 <Info className="info">
                   <h3>Platforms</h3>
                   <Platforms className="platforms">
-                    {game?.platforms?.map(
+                    {game.platforms.map(
                       (data) => (
                         <img
                           key={

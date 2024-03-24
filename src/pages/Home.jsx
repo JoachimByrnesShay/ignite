@@ -8,7 +8,7 @@ import Game from ".././components/Game";
 import {
   motion,
   AnimatePresence,
-  LayoutGroup,
+  // LayoutGroup,
 } from "framer-motion";
 import styled from "styled-components";
 import GameDetail from ".././components/GameDetail";
@@ -18,7 +18,7 @@ const Home = () => {
   const location = useLocation();
   const pathId =
     location.pathname.split("/")[2];
-  console.log(location);
+  // console.log(location);
   //FETCH GAMES
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,9 +26,9 @@ const Home = () => {
   }, [dispatch]);
 
   const {
-    popular,
+    // popular,
     upcoming,
-    newGames,
+    // newGames,
   } = useSelector(
     (state) => state.games
   );
@@ -36,26 +36,24 @@ const Home = () => {
   return (
     <GameList>
       {/* <LayoutGroup type="crossfade"> */}
-      <AnimatePresence>
-        {" "}
-        {pathId && (
-          <GameDetail
-            pathId={pathId}
-            initial={{
-              opacity: 0,
-              y: 700,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 3,
-              ease: "easeOut",
-            }}
-          />
-        )}
-      </AnimatePresence>
+
+      {pathId && (
+        <GameDetail
+          pathId={pathId}
+          initial={{
+            opacity: 0,
+            y: 700,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeOut",
+          }}
+        />
+      )}
 
       <h2>Upcoming Games</h2>
 

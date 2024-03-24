@@ -40,11 +40,14 @@ const new_games = `games?token&key=${apiKey}&dates=${lastYearDate},${currentDate
 
 
 export const popularGamesURL = () => `${base_url}${popular_games}`;
+// export const popularGamesURL = ()=>"https://api.rawg.io/api/games?token&key=18134781ea904b9ea7206d3e9f600925&dates=2023-03-23,2024-03-23";
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${new_games}`;
 export const gameDetailsURL = (game_id) => `${base_url}games/${game_id}?token&key=${apiKey}`;
-//https://api.rawg.io/api/games/962674?token&key=7f49ec3c0f8d4489973dfb1ee425aa83
+//https://api.rawg.io/api/games/962674?token&key=18134781ea904b9ea7206d3e9f600925
+
+// https://api.rawg.io/api/games/?token&key=18134781ea904b9ea7206d3e9f600925&dates=2023-3-23,2024-3-23&ordering=-rating&page_size=10
 
 export const gameScreenShotsURL = (game_id) => `${base_url}games/${game_id}/screenshots?token&key=${apiKey}`;
 
-console.log(popularGamesURL());
+// console.log(popularGamesURL());

@@ -2,6 +2,7 @@
 //   .VITE_RAWG_APIKEY;
 //import apiKey from "./apiKey";
 import Home from "./pages/Home";
+import Nav from "./components/Nav";
 import GlobalStyles from "./components/GlobalStyles";
 import {
   Route,
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles />
+      <Nav />
       <Routes>
         {["/game/:id", "/"].map(
           (path) => (

@@ -1,3 +1,9 @@
 :root {
     user-select:none;
 }
+
+input {
+    font-weight: 600;
+    font-family: "Montserrat",
+      sans-serif;
+}
