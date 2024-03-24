@@ -3,7 +3,10 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import { loadGames } from "../actions/gamesAction";
+import {
+  fetchSearch,
+  loadGames,
+} from "../actions/gamesAction";
 import Game from ".././components/Game";
 import {
   motion,
@@ -21,6 +24,7 @@ const Home = () => {
   // console.log(location);
   //FETCH GAMES
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
@@ -29,6 +33,7 @@ const Home = () => {
     // popular,
     upcoming,
     // newGames,
+    searched,
   } = useSelector(
     (state) => state.games
   );
@@ -55,9 +60,29 @@ const Home = () => {
         />
       )}
 
-      <h2>Upcoming Games</h2>
-
       <Games>
+        {searched && searched.length ? (
+          <h2> Searched Games</h2>
+        ) : (
+          ""
+        )}
+        {searched &&
+          searched.map((game) => {
+            return (
+              <Game
+                key={game.id}
+                name={game.name}
+                releaseDate={
+                  game.released
+                }
+                gameId={game.id}
+                image={
+                  game.background_image
+                }
+              />
+            );
+          })}
+        <h2>Upcoming Games</h2>
         {upcoming &&
           upcoming.map((game) => {
             // console.log(game);
@@ -132,6 +157,9 @@ const Games = styled(motion.div)`
   );
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
+  h2 {
+    grid-column: 1 / -1;
+  }
 `;
 
 export default Home;
